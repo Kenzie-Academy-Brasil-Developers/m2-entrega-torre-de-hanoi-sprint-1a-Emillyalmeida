@@ -1,10 +1,23 @@
-//container
-  //div vareta
-
-
 
 const containerTotal = document.getElementById('containerTotal')
-console.log(containerTotal)
+
+const header = document.createElement('header')
+const h1 = document.createElement("h1")
+h1.innerText = "Torre de Haroi"
+const buttonIniciar = document.createElement('button')
+buttonIniciar.innerText = "Iniciar"
+buttonIniciar.id = "iniciar"
+const buttonReset = document.createElement('button')
+buttonReset.innerText = "Reset"
+
+header.appendChild(h1)
+header.appendChild(buttonIniciar)
+header.appendChild(buttonReset)
+
+containerTotal.appendChild(header)
+
+
+const start = document.getElementById('iniciar')
 
 function createElements(){
     for(let i =1; i<4;i++){
@@ -38,4 +51,17 @@ function createElements(){
     createDiscos()
 }
 
-createElements()
+start.addEventListener('click',createElements)
+
+function selecionarDisco(event) {
+    let torre = event.target
+    console.log(torre)
+    if(torre.tagName === "UL"){
+        let countDiscos = torre.childElementCount
+        let lastDisco = torre.lastElementChild
+
+    }
+
+}
+
+containerTotal.addEventListener('click',selecionarDisco, event)
