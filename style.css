@@ -3,6 +3,7 @@ body{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color: aqua;
 }
 
 header{
@@ -35,7 +36,8 @@ header button {
     margin-bottom: 10px;
     width: 280px;
     height: 200px;
-    background-color: aqua;
+    background-color: #fff;
+    
 }
 
 .container_total div {
@@ -63,17 +65,17 @@ header button {
     border-radius: 10px;
 }
 
-.container_total ul :nth-child(2){
+.container_total ul .media1{
     background-color: blue;
     width: 70%;
 }
 
-.container_total ul :nth-child(3){
+.container_total ul .media2{
     background-color: yellow;
     width: 55%;
 }
 
-.container_total ul :nth-child(4){
+.container_total ul .menor{
     background-color: green;
     width: 35%;
 }
@@ -82,6 +84,7 @@ header button {
 
     .container_total{
         width: 30%;
+        height: 250px;
     }
     header h1 {
         font-size: 40px;

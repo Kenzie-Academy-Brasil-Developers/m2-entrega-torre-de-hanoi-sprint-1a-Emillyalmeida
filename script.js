@@ -38,9 +38,13 @@ function createElements(){
         const ul = torre1.getElementsByTagName("ul")
         
         const liMaior = document.createElement('li')
+        liMaior.classList.add('maior')
         const liMedia1 = document.createElement('li')
+        liMedia1.classList.add('media1')
         const liMedia2 = document.createElement("li")
+        liMedia2.classList.add('media2')
         const liMenor = document.createElement("li")
+        liMenor.classList.add('menor')
     
         ul[0].appendChild(liMaior)
         ul[0].appendChild(liMedia1)
@@ -53,15 +57,43 @@ function createElements(){
 
 start.addEventListener('click',createElements)
 
+
+//mover as li's
+let countclick = 0
+let countDiscos = ""
+let lastDisco = ""
+
 function selecionarDisco(event) {
     let torre = event.target
-    console.log(torre)
     if(torre.tagName === "UL"){
-        let countDiscos = torre.childElementCount
-        let lastDisco = torre.lastElementChild
-
+        countDiscos = torre.childElementCount
+        if(countclick == 0 && countDiscos>0){
+            lastDisco = torre.lastElementChild
+            countclick += 1
+        }else if(countclick==1){
+            checkSizeLi(torre)
+        }
+          
     }
+}
 
+function checkSizeLi (torre){
+    if(torre.childElementCount>0){
+        let insidedisc = torre.lastElementChild
+        let sizeDisc = insidedisc.offsetWidth
+        let sizePutDisc = lastDisco.offsetWidth
+        if(sizeDisc>sizePutDisc){
+            torre.appendChild(lastDisco)
+            countclick=0
+
+        }else{
+            alert('Os dicos maiores não podem ser em cima dos menores')
+            countclick=0
+        }
+    }else{
+        torre.appendChild(lastDisco)
+        countclick=0
+    }
 }
 
 containerTotal.addEventListener('click',selecionarDisco, event)
