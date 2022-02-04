@@ -21,14 +21,19 @@ containerTotal.appendChild(header)
 const main = document.createElement('main')
 main.id ="main"
 
+
 containerTotal.appendChild(main)
 
 const start = document.getElementById('iniciar')
 const resetar = document.getElementById("reset")
-
+let moveCount = 1
 let count = false
-
 function createElements(){
+    const contador = document.createElement('h2')
+    contador.id = 'contador'
+    contador.innerHTML = "Movimentos : "
+
+    main.appendChild(contador)
     if(count==false){
         for(let i =1; i<4;i++){
             const divDiscos = document.createElement('ul')
@@ -72,7 +77,10 @@ let lastDisco = ""
 
 function selecionarDisco(event) {
     let torre = event.target
-    if(torre.tagName === "UL"){
+    if(torre.tagName === "UL"|| torre.tagName === "LI"){
+        if(torre.tagName === "LI"){
+            torre = torre.parentNode
+        }
         countDiscos = torre.childElementCount
         if(countclick == 0 && countDiscos>0){
             lastDisco = torre.lastElementChild
@@ -85,31 +93,33 @@ function selecionarDisco(event) {
 }
 
 function checkSizeLi (torre){
+    const countMove = document.getElementById('contador')
+    countMove.innerHTML="Movimentos " +  moveCount
     if(torre.childElementCount>0){
         let insidedisc = torre.lastElementChild
         let sizeDisc = insidedisc.offsetWidth
         let sizePutDisc = lastDisco.offsetWidth
         if(sizeDisc>sizePutDisc){
+            moveCount++
             torre.appendChild(lastDisco)
-            countclick = 0
+            countclick = 0   
 
         }else{
             alert('Os dicos maiores não podem ser em cima dos menores')
             countclick = 0
         }
     }else{
+        moveCount++
         torre.appendChild(lastDisco)
         countclick = 0
+        console.log(moveCount)
     }
 }
 
 containerTotal.addEventListener('click',selecionarDisco)
 
 function isWinner(){
-    // const torre1 = document.getElementById('container-torre1')
-    // const torre2 = document.getElementById('container-torre2')
-    // const torre3 = document.getElementById('container-torre3')
-    if(main.childNodes[1].childElementCount == 4|| main.childNodes[2].childElementCount == 4){
+    if(main.childNodes[2].childElementCount == 4|| main.childNodes[3].childElementCount == 4){
         removeAll()
         winnerMensage()
     }
@@ -140,8 +150,12 @@ function removeAll(){
       }
     // let remove = remover.forEach((elemt)=>elemt.remove())
     // console.log(remove)
+    console.log(remover)
     if(remover.length>0){
-        let removeAgain = remover[0].remove()
+        let removeAgain = 0
+        while(remover.length>0){
+            removeAgain = remover[0].remove()
+        }
         return removeAgain
     }else{
         return remover
@@ -154,6 +168,7 @@ function removeAll(){
 function resetAll(){
     removeAll()
     count = false
+    moveCount = 1
     createElements()
 }
 
