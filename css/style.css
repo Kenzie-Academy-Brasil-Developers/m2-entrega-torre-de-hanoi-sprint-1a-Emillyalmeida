@@ -1,6 +1,7 @@
 body{
     width: 100%;
-    background-color: aqua
+    background-color: aqua;
+    box-sizing: border-box;
 }
 
 main{ 
@@ -8,12 +9,14 @@ main{
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: aqua;
+    width: 100%;
+    height: 510px;
 }
 
 header{
     background-color: chocolate;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     width: 100%;
     height: 50px;
     display: flex;
@@ -38,24 +41,26 @@ header button {
 
 main .container_total {
     margin-bottom: 10px;
-    width: 280px;
-    height: 200px;
-    background-color: #fff;
-    border-radius: 10%;
+    width: 75%;
+    background-image: url("./torre.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 8%;
 }
 
-main .container_total{
-    height: 100%;
-    width: 100%;
+main ul{
     display: flex; 
     flex-direction: column-reverse; 
     align-items: center;
     cursor: pointer;
+    height: 30%;
+    padding-bottom: 7%;
+    
 }
 
 main .container_total li {
     width: 90%;
-    height: 30px;
+    height: 15%;
     background-color: red;
     list-style: none;
     border: 1px solid black;
@@ -78,7 +83,7 @@ main .container_total li {
 }
 
 .winner {
-    width: 100%;
+    width: 90%;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -87,21 +92,24 @@ main .container_total li {
 }
 
 .winner img{
-    width: 90%;
+    width: 80%;
     height: 80%;
+    border-radius: 12%;
 }
 
 .winner h2 {
     color: #fff;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 26px;
+    text-align: center;
 }
 
 @media screen and (min-width:768px){
 
     main .container_total{
         width: 30%;
-        height: 250px;
+        height: 50%;
+        padding-bottom: 6%;
     }
     header h1 {
         font-size: 40px;
@@ -110,5 +118,41 @@ main .container_total li {
         width: 80px;
         height: 32px;
         font-size: 18px;
+    }
+
+    .winner{
+        height: 80%;
+    }
+
+    .winner h2{
+        font-size: 40px;
+    }
+}
+
+@media screen and (min-width:1024px){
+    main .container_total{
+        width: 30%;
+        height: 70%;
+        padding-bottom: 5%;
+    }
+
+    header{
+        height: 80px;
+    }
+    header h1 {
+        font-size: 60px;
+    }
+    header button {
+        width: 120px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .winner{
+        height: 80%;
+    }
+
+    .winner h2{
+        font-size: 40px;
     }
 }
