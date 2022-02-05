@@ -26,24 +26,28 @@ containerTotal.appendChild(main)
 
 const start = document.getElementById('iniciar')
 const resetar = document.getElementById("reset")
+
 let moveCount = 1
 let count = false
-function createElements(){
-    const contador = document.createElement('h2')
-    contador.id = 'contador'
-    contador.innerHTML = "Movimentos : "
 
-    main.appendChild(contador)
+function createElements(){
     if(count==false){
-        for(let i =1; i<4;i++){
-            const divDiscos = document.createElement('ul')
-            divDiscos.id = "container-torre" + i
-            divDiscos.classList.add("container_total")
-    
-            main.appendChild(divDiscos)
-        }
-        createDiscos()
+        const contador = document.createElement('h2')
+        contador.id = 'contador'
+        contador.innerHTML = "Movimentos : "
+
+        main.appendChild(contador)
+
+            for(let i =1; i<4;i++){
+                const divDiscos = document.createElement('ul')
+                divDiscos.id = "container-torre" + i
+                divDiscos.classList.add("container_total")
+        
+                main.appendChild(divDiscos)
+            }
+            createDiscos()
     }
+    
 }
 
 function createDiscos(){
@@ -62,6 +66,8 @@ function createDiscos(){
     torre1.appendChild(liMedia1)
     torre1.appendChild(liMedia2)
     torre1.appendChild(liMenor)
+
+    handlerOls(torre1)
 
     count = true
 }
@@ -112,11 +118,19 @@ function checkSizeLi (torre){
         moveCount++
         torre.appendChild(lastDisco)
         countclick = 0
-        console.log(moveCount)
     }
 }
 
-containerTotal.addEventListener('click',selecionarDisco)
+function handlerOls (torre1){
+    const torre = torre1
+    const torre2 = document.getElementById("container-torre2")
+    const torre3 = document.getElementById("container-torre3")
+
+    torre.addEventListener('click',selecionarDisco)
+    torre2.addEventListener('click',selecionarDisco)
+    torre3.addEventListener('click',selecionarDisco)
+}
+
 
 function isWinner(){
     if(main.childNodes[2].childElementCount == 4|| main.childNodes[3].childElementCount == 4){
@@ -148,9 +162,6 @@ function removeAll(){
     for(let i = 0;i<remover.length;i++){
          remover[i].remove()
       }
-    // let remove = remover.forEach((elemt)=>elemt.remove())
-    // console.log(remove)
-    console.log(remover)
     if(remover.length>0){
         let removeAgain = 0
         while(remover.length>0){
