@@ -59,6 +59,10 @@ main .container_total {
     border-radius: 8%;
 }
 
+main .container_total:hover{
+    border: 1px solid blue;
+}
+
 main ul{
     display: flex; 
     flex-direction: column-reverse; 

@@ -83,7 +83,6 @@ let lastDisco = ""
 
 function selecionarDisco(event) {
     let torre = event.target
-    if(torre.tagName === "UL"|| torre.tagName === "LI"){
         if(torre.tagName === "LI"){
             torre = torre.parentNode
         }
@@ -95,7 +94,6 @@ function selecionarDisco(event) {
             checkSizeLi(torre)
             isWinner()
         }
-    }
 }
 
 function checkSizeLi (torre){
