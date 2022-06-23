@@ -9,10 +9,8 @@
             rel="noopener noreferrer"
           />
           <figcaption>Exemplo: Torre de hanoi.</figcaption>
-        </figure>
-        <p>O envio deve ser o trabalho realizado por você - (não copiem a solução escrita por outra pessoa).</p>
-        
-        <h2>Tarefa</h2>
+        </figure>  
+        <h2>Regras</h2>
         <p>
           O objetivo do quebra-cabeças é mover toda a pilha para outra vareta
           obedecendo às seguintes regras:
@@ -30,8 +28,7 @@
           <li>
             <p>Nenhum disco pode ser colocado no topo de um disco menor.</p>
           </li>
-        </ol>
-        
+        </ol>      
       <figure>
         <img
           src="https://media.giphy.com/media/rutTKcoKSCSYM/giphy.gif"
